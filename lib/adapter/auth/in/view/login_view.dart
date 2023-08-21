@@ -16,6 +16,9 @@ class LoginView extends StatefulWidget {
 class LoginViewState extends State<LoginView> {
   LoginViewModel loginViewModel = Get.put(LoginViewModel());
 
+  late GodocColors godocColors;
+  late GodocTextStyle godocTextStyle;
+
   final _idFormKey = GlobalKey<FormState>();
   final _passwordFormKey = GlobalKey<FormState>();
 
@@ -30,6 +33,9 @@ class LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    godocColors = Theme.of(context).extension<GodocColors>()!;
+    godocTextStyle = GodocTextStyle(context);
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Stack(
@@ -76,7 +82,7 @@ class LoginViewState extends State<LoginView> {
       child: Text(
         'GoDoc',
         textAlign: TextAlign.center,
-        style: GodocTextStyle.title.copyWith(color: GodocColors.godocBlue600),
+        style: godocTextStyle.title.copyWith(color: godocColors.godocBlue600),
       ),
     );
   }
@@ -103,24 +109,24 @@ class LoginViewState extends State<LoginView> {
             },
             decoration: InputDecoration(
                 hintText: '아이디를 입력해 주세요',
-                hintStyle: GodocTextStyle.bodyText3
-                    .copyWith(color: GodocColors.godocGray400),
+                hintStyle: godocTextStyle.bodyText3
+                    .copyWith(color: godocColors.godocGray400),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocBlue300)),
+                    BorderSide(width: 2, color: godocColors.godocBlue300!)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocBlue500)),
+                    BorderSide(width: 2, color: godocColors.godocBlue500!)),
                 focusedErrorBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocRed500)),
+                    BorderSide(width: 2, color: godocColors.godocRed500!)),
                 errorBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocRed500))),
+                    BorderSide(width: 2, color: godocColors.godocRed500!))),
           ),
         ));
   }
@@ -150,24 +156,24 @@ class LoginViewState extends State<LoginView> {
             },
             decoration: InputDecoration(
                 hintText: '비밀번호를 입력해 주세요',
-                hintStyle: GodocTextStyle.bodyText3
-                    .copyWith(color: GodocColors.godocGray400),
+                hintStyle: godocTextStyle.bodyText3
+                    .copyWith(color: godocColors.godocGray400),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocBlue300)),
+                    BorderSide(width: 2, color: godocColors.godocBlue300!)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocBlue500)),
+                    BorderSide(width: 2, color: godocColors.godocBlue500!)),
                 focusedErrorBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocRed500)),
+                    BorderSide(width: 2, color: godocColors.godocRed500!)),
                 errorBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     borderSide:
-                    BorderSide(width: 2, color: GodocColors.godocRed500))),
+                    BorderSide(width: 2, color: godocColors.godocRed500!))),
             obscureText: true,
           ),
         ));
@@ -188,12 +194,12 @@ class LoginViewState extends State<LoginView> {
           }
         },
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(GodocColors.godocBlue600),
+          backgroundColor: MaterialStateProperty.all(godocColors.godocBlue600),
         ),
         child: Text(
           'Login',
           style:
-          GodocTextStyle.bodyText.copyWith(color: GodocColors.godocGray50),
+          godocTextStyle.bodyText.copyWith(color: godocColors.godocGray50),
         ),
       ),
     );
@@ -206,7 +212,7 @@ class LoginViewState extends State<LoginView> {
       child: Text(
         '아아디 / 비밀번호 찾기',
         style:
-        GodocTextStyle.bodyText3.copyWith(color: GodocColors.godocBlue600),
+        godocTextStyle.bodyText3.copyWith(color: godocColors.godocBlue600),
       ),
     );
   }
@@ -216,13 +222,13 @@ class LoginViewState extends State<LoginView> {
         padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
         child: Row(
           children: [
-            Expanded(child: Divider(color: GodocColors.godocGray500)),
+            Expanded(child: Divider(color: godocColors.godocGray500)),
             Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                 child: Text('others',
-                    style: GodocTextStyle.bodyText
-                        .copyWith(color: GodocColors.godocGray500))),
-            Expanded(child: Divider(color: GodocColors.godocGray500)),
+                    style: godocTextStyle.bodyText
+                        .copyWith(color: godocColors.godocGray500))),
+            Expanded(child: Divider(color: godocColors.godocGray500)),
           ],
         ));
   }
@@ -233,7 +239,7 @@ class LoginViewState extends State<LoginView> {
       children: [
         Text(
           '계정이 없으신가요?',
-          style: GodocTextStyle.bodyText,
+          style: godocTextStyle.bodyText,
         ),
         const SizedBox(width: 5),
         singUpButton()
@@ -248,7 +254,7 @@ class LoginViewState extends State<LoginView> {
       child: Text(
         'Sign up',
         style:
-        GodocTextStyle.headline2.copyWith(color: GodocColors.godocBlue600),
+        godocTextStyle.headline2.copyWith(color: godocColors.godocBlue600),
       ),
     );
   }

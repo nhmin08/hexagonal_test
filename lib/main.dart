@@ -7,6 +7,8 @@ import 'package:injectable/injectable.dart';
 
 import 'main.config.dart';
 
+import 'package:hexagonal_test/utils/theme/theme.dart';
+
 final injector = GetIt.instance;
 
 @InjectableInit()
@@ -24,9 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'hexagonal test',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: GodocTheme.lightTheme,
+      darkTheme: GodocTheme.darkTheme,
+      themeMode: ThemeMode.system,
       home: const LoginView(),
     );
   }
